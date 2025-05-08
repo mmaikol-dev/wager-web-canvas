@@ -10,6 +10,8 @@ import BuyTip from "./pages/BuyTip";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 import NotFound from "./pages/NotFound";
 import Jackpot from "./pages/Jackpot";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -33,6 +35,8 @@ const App = () => (
               <Route path="/pro-plan" element={<SubscriptionPlans />} />
               <Route path="/vip-plan" element={<SubscriptionPlans />} />
               <Route path="/jackpot" element={<Jackpot />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
