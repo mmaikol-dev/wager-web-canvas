@@ -9,6 +9,7 @@ import FindMyTip from "./pages/FindMyTip";
 import BuyTip from "./pages/BuyTip";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 import NotFound from "./pages/NotFound";
+import Jackpot from "./pages/Jackpot";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -31,7 +32,7 @@ const App = () => (
               <Route path="/rollover" element={<SubscriptionPlans />} />
               <Route path="/pro-plan" element={<SubscriptionPlans />} />
               <Route path="/vip-plan" element={<SubscriptionPlans />} />
-              <Route path="/jackpot" element={<NotFound />} />
+              <Route path="/jackpot" element={<Jackpot />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
