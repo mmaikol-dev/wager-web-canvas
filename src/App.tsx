@@ -9,6 +9,8 @@ import FindMyTip from "./pages/FindMyTip";
 import BuyTip from "./pages/BuyTip";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -18,17 +20,23 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/find-tip" element={<FindMyTip />} />
-          <Route path="/buy-tip" element={<BuyTip />} />
-          <Route path="/subscription-plans" element={<SubscriptionPlans />} />
-          <Route path="/rollover" element={<SubscriptionPlans />} />
-          <Route path="/pro-plan" element={<SubscriptionPlans />} />
-          <Route path="/vip-plan" element={<SubscriptionPlans />} />
-          <Route path="/jackpot" element={<NotFound />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/find-tip" element={<FindMyTip />} />
+              <Route path="/buy-tip" element={<BuyTip />} />
+              <Route path="/subscription-plans" element={<SubscriptionPlans />} />
+              <Route path="/rollover" element={<SubscriptionPlans />} />
+              <Route path="/pro-plan" element={<SubscriptionPlans />} />
+              <Route path="/vip-plan" element={<SubscriptionPlans />} />
+              <Route path="/jackpot" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
