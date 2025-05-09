@@ -1,128 +1,105 @@
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import FreeTipsTable from '@/components/FreeTipsTable';
-import RecentPredictions from '@/components/RecentPredictions';
-import InfoAlert from '@/components/InfoAlert';
+import React from 'react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import InfoAlert from "@/components/InfoAlert";
+import RecentPredictions from "@/components/RecentPredictions";
+import FreeTipsTable from "@/components/FreeTipsTable";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState('today');
-  
-  const freeTips = [
-    { id: 1, time: '18:00', league: 'Erovnuli Liga', fixture: 'Fc Dinamo Tbilisi vs Telavi', tip: '1' },
-    { id: 2, time: '20:30', league: 'Iraq, Stars League', fixture: 'Al Shorta vs Al Karkh', tip: '1' },
-    { id: 3, time: '21:00', league: 'Faroe Islands, 1st delid', fixture: 'Skala If vs Ki Klaksvik Ii', tip: '1' },
-  ];
-  
-  const recentPredictions = [
-    { id: 1, date: '8/4', league: 'AUT', fixture: 'Gloggnitz vs Mauer', prediction: 'gg', result: '1:1' },
-    { id: 2, date: '8/4', league: 'BUL', fixture: 'Pirin Blagoevgrad vs Ludogorets II', prediction: '1', result: '1:0' },
-    { id: 3, date: '8/4', league: 'EST', fixture: 'Narva Trans vs Tallinna Kalev', prediction: '1', result: '1:0' },
-    { id: 4, date: '8/4', league: 'EST', fixture: 'Tartu Tammeka vs Flora Tallinn', prediction: 'over 2.5', result: '1:2' },
-    { id: 5, date: '8/4', league: 'KSA', fixture: 'Al-Batin vs Neom SC', prediction: '2', result: '2:7' },
-  ];
-  
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="bg-betblue text-white py-2 text-center">
-        <p>Tips are sent instantly via SMS. If you haven't received a message find your tips HERE!</p>
-      </div>
-      <Navbar />
-      <main className="flex-grow">
-        <section className="bg-betgray py-14">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
-              <h1 className="text-4xl font-bold mb-4">Bet Smarter. Win More. Elevate Your Game Every Day!</h1>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Welcome to BetPredict – your ultimate destination for consistent and accurate daily predictions. 
-                We provide expertly analyzed tips with high-value selections, multi-bets, and expert jackpot Predictions 
-                to maximize your winnings.
-              </p>
-            </div>
-            
-            <div className="max-w-5xl mx-auto mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-center">Free Expert Tips</h2>
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                <div className="flex mb-4 border-b">
-                  <button 
-                    onClick={() => setActiveTab('yesterday')}
-                    className={`py-3 px-6 font-medium ${activeTab === 'yesterday' ? 'text-betblue border-b-2 border-betblue' : 'text-gray-500'}`}
-                  >
-                    Yesterday
-                  </button>
-                  <button 
-                    onClick={() => setActiveTab('today')}
-                    className={`py-3 px-6 font-medium ${activeTab === 'today' ? 'text-betblue border-b-2 border-betblue' : 'text-gray-500'}`}
-                  >
-                    Today
-                  </button>
-                  <button 
-                    onClick={() => setActiveTab('tomorrow')}
-                    className={`py-3 px-6 font-medium ${activeTab === 'tomorrow' ? 'text-betblue border-b-2 border-betblue' : 'text-gray-500'}`}
-                  >
-                    Tomorrow
-                  </button>
-                </div>
-                
-                <div className="p-4">
-                  <FreeTipsTable tips={freeTips} />
-                </div>
-              </div>
-            </div>
-            
-            <div className="max-w-5xl mx-auto mb-10">
-              <h2 className="text-2xl font-bold mb-6 text-center">Recently Won Predictions</h2>
-              <RecentPredictions predictions={recentPredictions} />
-            </div>
-            
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6 text-center">Why Choose BetPredict?</h2>
-              
-              <div className="mb-10">
-                <h3 className="text-xl font-bold mb-3">1. Expert Football Analysis</h3>
-                <p className="text-gray-700">
-                  Our team of football analysts and statisticians are passionate about the game. We dive deep into team form, 
-                  player performance, head-to-head records, and tactical trends to provide you with predictions you can trust. From 
-                  Arsenal's attacking prowess to Manchester United's defensive strategies, we analyze every detail to give you an 
-                  edge in your betting journey.
-                </p>
-              </div>
-              
-              <div className="mb-10">
-                <h3 className="text-xl font-bold mb-3">5. Trusted by Bettors Worldwide</h3>
-                <p className="text-gray-700">
-                  BetPredict has earned the trust of thousands of bettors across the globe. Our transparent approach, consistent 
-                  results, and commitment to excellence have made us a go-to platform for football predictions. Join our community 
-                  and experience the difference that expert insights can make.
-                </p>
-              </div>
-              
-              <div className="text-center mt-12">
-                <p className="text-lg font-medium mb-4">Ready to elevate your betting experience?</p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link 
-                    to="/subscription-plans" 
-                    className="bg-betblue text-white py-3 px-8 rounded-md font-bold hover:bg-betblue-light transition-colors"
-                  >
-                    View Premium Plans
-                  </Link>
-                  <Link 
-                    to="/buy-tip" 
-                    className="bg-white text-betblue border border-betblue py-3 px-8 rounded-md font-bold hover:bg-gray-50 transition-colors"
-                  >
-                    Buy Today's Tip
-                  </Link>
-                </div>
-              </div>
-            </div>
+    <div className="container mx-auto py-8">
+      <InfoAlert 
+        message="Tips are sent instantly via SMS. If you haven't received a message find your tips HERE!" 
+        className="mb-8"
+      />
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div className="flex flex-col justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Get Winning <span className="text-betblue">Football Predictions</span>
+          </h1>
+          <p className="text-lg text-gray-700 mb-6">
+            Access expert football tips, predictions, and in-depth analysis to improve your betting success.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/find-tip">
+              <Button className="bg-betblue hover:bg-betblue-light">
+                Find My Tip
+              </Button>
+            </Link>
+            <Link to="/buy-tip">
+              <Button variant="outline">
+                Buy Premium Tips
+              </Button>
+            </Link>
           </div>
-        </section>
-      </main>
-      <Footer />
+        </div>
+        <div className="rounded-lg overflow-hidden shadow-xl">
+          <img 
+            src="/lovable-uploads/b876758e-e936-4334-b4a1-6546e0f5d090.png" 
+            alt="BetPredict Football Tips" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+      
+      <Tabs defaultValue="free" className="mb-8">
+        <TabsList className="w-full max-w-md mx-auto grid grid-cols-2">
+          <TabsTrigger value="free">Free Tips</TabsTrigger>
+          <TabsTrigger value="recent">Recent Predictions</TabsTrigger>
+        </TabsList>
+        <TabsContent value="free" className="mt-6">
+          <Card>
+            <CardContent className="pt-6">
+              <FreeTipsTable />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="recent" className="mt-6">
+          <Card>
+            <CardContent className="pt-6">
+              <RecentPredictions />
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Card>
+          <CardContent className="pt-6">
+            <h3 className="text-xl font-semibold mb-2">Daily Predictions</h3>
+            <p className="text-gray-600 mb-4">Get new tips every day with high win probability.</p>
+            <Link to="/find-tip">
+              <Button variant="outline" className="w-full">View Today's Tips</Button>
+            </Link>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="pt-6">
+            <h3 className="text-xl font-semibold mb-2">VIP Membership</h3>
+            <p className="text-gray-600 mb-4">Unlock premium predictions with our VIP subscription plan.</p>
+            <Link to="/vip-plan">
+              <Button className="w-full bg-betblue hover:bg-betblue-light">Join VIP</Button>
+            </Link>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="pt-6">
+            <h3 className="text-xl font-semibold mb-2">Jackpot Predictions</h3>
+            <p className="text-gray-600 mb-4">Win big with our special jackpot prediction packages.</p>
+            <Link to="/jackpot">
+              <Button variant="outline" className="w-full">View Jackpots</Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
-};
+}
 
 export default Home;
