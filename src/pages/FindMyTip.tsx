@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import Footer from '@/components/Footer';
 import { toast } from '@/components/ui/sonner';
 
 const FindMyTip = () => {
@@ -70,7 +69,6 @@ const FindMyTip = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

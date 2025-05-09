@@ -1,5 +1,4 @@
 
-import Footer from '@/components/Footer';
 import PricingPlan from '@/components/PricingPlan';
 
 const SubscriptionPlans = () => {
@@ -51,7 +50,6 @@ const SubscriptionPlans = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

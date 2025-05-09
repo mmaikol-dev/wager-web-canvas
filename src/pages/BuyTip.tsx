@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import Footer from '@/components/Footer';
 import InfoAlert from '@/components/InfoAlert';
 import MatchesList from '@/components/MatchesList';
 import { toast } from '@/components/ui/sonner';
@@ -73,7 +72,6 @@ const BuyTip = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
