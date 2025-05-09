@@ -10,7 +10,7 @@ const Jackpot = () => {
       league: "Premier League",
       match: "Arsenal vs Manchester City",
       odds: 5.25,
-      jackpotAmount: "£25,000",
+      jackpotAmount: "KSh 25,000",
       date: "May 9, 2025"
     },
     {
@@ -18,7 +18,7 @@ const Jackpot = () => {
       league: "La Liga",
       match: "Barcelona vs Real Madrid",
       odds: 4.75,
-      jackpotAmount: "£20,000",
+      jackpotAmount: "KSh 20,000",
       date: "May 12, 2025"
     },
     {
@@ -26,7 +26,7 @@ const Jackpot = () => {
       league: "Bundesliga",
       match: "Bayern Munich vs Borussia Dortmund",
       odds: 3.85,
-      jackpotAmount: "£15,000",
+      jackpotAmount: "KSh 15,000",
       date: "May 15, 2025"
     }
   ];
@@ -51,7 +51,7 @@ const Jackpot = () => {
             <p className="opacity-90">Predict 10 matches correctly to win</p>
           </div>
           <div className="text-center">
-            <div className="text-2xl md:text-4xl font-bold mb-1">£100,000</div>
+            <div className="text-2xl md:text-4xl font-bold mb-1">KSh 100,000</div>
             <Badge className="bg-white text-betblue">Closing Soon</Badge>
           </div>
         </div>
