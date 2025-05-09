@@ -24,8 +24,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <span className="text-2xl font-bold">
-            <span className="text-betblue">Bet</span>
-            <span className="text-black">Predict</span>
+            <span className="text-betblue">Golden</span>
+            <span className="text-black">Picks</span>
           </span>
         </Link>
         
