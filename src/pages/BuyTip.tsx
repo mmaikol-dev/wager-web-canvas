@@ -64,7 +64,7 @@ const BuyTip = () => {
                     type="submit"
                     className="py-3 px-6 bg-betblue text-white font-semibold rounded-md hover:bg-betblue-light transition-colors"
                   >
-                    Buy @KSH. 50
+                    Buy @ KSh 50
                   </button>
                 </form>
               </div>

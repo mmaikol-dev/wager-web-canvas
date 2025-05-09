@@ -17,7 +17,7 @@ const SubscriptionPlans = () => {
                 </svg>
               }
               description="Get sure 3-5 odds daily and earn consistently. This plan is perfect for those looking for steady and consistent returns. Once you purchase, your tips will be sent instantly via SMS."
-              price="BUY @KSH. 50"
+              price="BUY @ KSh 50"
               rating={5}
               buyLink="/buy-tip"
             />
@@ -30,7 +30,7 @@ const SubscriptionPlans = () => {
                 </svg>
               }
               description="Receive 5-7 premium odds daily, carefully analyzed to maximize your returns. If you're looking for bigger odds and bigger profits, this plan is for you! Tips are sent instantly via SMS."
-              price="BUY @KSH. 70"
+              price="BUY @ KSh 70"
               rating={4.5}
               buyLink="/buy-tip"
             />
@@ -43,7 +43,7 @@ const SubscriptionPlans = () => {
                 </svg>
               }
               description="Get sure 8-15 odds daily and earn consistently. Ideal for serious bettors aiming for bigger profits. Your tips are sent instantly via SMS upon purchase."
-              price="BUY @KSH. 100"
+              price="BUY @ KSh 100"
               rating={4}
               buyLink="/buy-tip"
             />
