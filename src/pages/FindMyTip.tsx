@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { toast } from '@/components/ui/sonner';
 
@@ -26,7 +25,6 @@ const FindMyTip = () => {
   
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
       <main className="flex-grow bg-betgray">
         <div className="container mx-auto px-4 py-10">
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden">

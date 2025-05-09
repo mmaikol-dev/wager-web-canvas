@@ -1,12 +1,10 @@
 
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PricingPlan from '@/components/PricingPlan';
 
 const SubscriptionPlans = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
       <main className="flex-grow bg-betgray">
         <div className="container mx-auto px-4 py-10">
           <h1 className="text-2xl font-bold mb-6 text-center">Premium Tips</h1>

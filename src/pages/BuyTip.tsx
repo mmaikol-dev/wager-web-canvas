@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InfoAlert from '@/components/InfoAlert';
 import MatchesList from '@/components/MatchesList';
@@ -33,7 +32,6 @@ const BuyTip = () => {
   
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
       <main className="flex-grow bg-betgray">
         <div className="container mx-auto px-4 py-10">
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
@@ -46,7 +44,7 @@ const BuyTip = () => {
               
               <MatchesList matches={matches} />
               
-              <InfoAlert message="Enter your M-pesa number below then click 'BUY'. You will be prompted to enter your M-pesa PIN. Kindly enter your M-pesa PIN to authorize the transaction. Tips are sent instantly via SMS." />
+              <InfoAlert message="Enter your M-pesa number below then click 'BUY'. You will be prompted to enter your M-pesa PIN. Kindly enter your M-pesa PIN to authorize the transaction. Tips are sent instantly via SMS." className="mb-6" />
               
               <div className="mb-6">
                 <h2 className="text-lg font-bold mb-4">M-Pesa Payment</h2>
