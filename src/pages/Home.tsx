@@ -9,6 +9,24 @@ import FreeTipsTable from "@/components/FreeTipsTable";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  // Sample data for FreeTipsTable
+  const freeTips = [
+    { id: 1, time: "15:00", league: "Premier League", fixture: "Arsenal vs Chelsea", tip: "Over 2.5" },
+    { id: 2, time: "16:30", league: "La Liga", fixture: "Barcelona vs Real Madrid", tip: "BTTS" },
+    { id: 3, time: "18:00", league: "Serie A", fixture: "Juventus vs Inter Milan", tip: "Home Win" },
+    { id: 4, time: "19:45", league: "Bundesliga", fixture: "Bayern vs Dortmund", tip: "Away Win" },
+    { id: 5, time: "21:00", league: "Ligue 1", fixture: "PSG vs Marseille", tip: "Draw" }
+  ];
+
+  // Sample data for RecentPredictions
+  const recentPredictions = [
+    { id: 1, date: "05/08/2025", league: "Premier League", fixture: "Man Utd vs Liverpool", prediction: "BTTS", result: "Win" },
+    { id: 2, date: "05/07/2025", league: "La Liga", fixture: "Atletico vs Sevilla", prediction: "Under 2.5", result: "Loss" },
+    { id: 3, date: "05/06/2025", league: "Serie A", fixture: "Milan vs Roma", prediction: "Home Win", result: "Win" },
+    { id: 4, date: "05/05/2025", league: "Bundesliga", fixture: "Leipzig vs Leverkusen", prediction: "Away Win", result: "Win" },
+    { id: 5, date: "05/04/2025", league: "Ligue 1", fixture: "Lyon vs Monaco", prediction: "Draw", result: "Loss" }
+  ];
+
   return (
     <div className="container mx-auto py-8">
       <InfoAlert 
@@ -54,14 +72,14 @@ const Home = () => {
         <TabsContent value="free" className="mt-6">
           <Card>
             <CardContent className="pt-6">
-              <FreeTipsTable />
+              <FreeTipsTable tips={freeTips} />
             </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="recent" className="mt-6">
           <Card>
             <CardContent className="pt-6">
-              <RecentPredictions />
+              <RecentPredictions predictions={recentPredictions} />
             </CardContent>
           </Card>
         </TabsContent>
