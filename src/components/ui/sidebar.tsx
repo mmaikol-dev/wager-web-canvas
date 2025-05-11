@@ -261,22 +261,35 @@ interface SidebarMenuButtonProps
   isActive?: boolean
 }
 
+// FIX: Type error by ensuring the button type is correctly specified
 const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonProps>(
   ({ className, variant, active, tooltip, asChild = false, isActive = false, ...props }, ref) => {
     const { state } = useSidebar()
     const isCollapsed = state === "collapsed"
-    const Comp = asChild ? React.Fragment : "button"
-    const finalProps = asChild ? props : { ...props, ref, type: "button" }
+    
+    if (asChild) {
+      return (
+        <div
+          data-active={isActive || active || undefined}
+          className={cn(menuButtonVariants({ variant }), className)}
+          data-tooltip={isCollapsed ? tooltip : undefined}
+          data-tooltip-position="right"
+          {...props}
+        />
+      );
+    }
 
     return (
-      <Comp
+      <button
+        ref={ref}
+        type="button"
         data-active={isActive || active || undefined}
         className={cn(menuButtonVariants({ variant }), className)}
         data-tooltip={isCollapsed ? tooltip : undefined}
         data-tooltip-position="right"
-        {...finalProps}
+        {...props}
       />
-    )
+    );
   }
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"
