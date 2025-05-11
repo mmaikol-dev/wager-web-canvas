@@ -14,7 +14,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { SidebarProvider } from "./components/ui/sidebar";
+import { SidebarProvider, MobileSidebarTrigger } from "./components/ui/sidebar";
 import AdminSidebar from "./components/admin/AdminSidebar";
 import AdminOverview from "./components/admin/AdminOverview";
 import AdminTips from "./components/admin/AdminTips";
@@ -51,6 +51,9 @@ const App = () => (
                   <div className="flex min-h-screen">
                     <AdminSidebar />
                     <main className="flex-1 p-6">
+                      <div className="md:hidden mb-4">
+                        <MobileSidebarTrigger />
+                      </div>
                       <AdminOverview />
                     </main>
                   </div>
@@ -61,6 +64,9 @@ const App = () => (
                   <div className="flex min-h-screen">
                     <AdminSidebar />
                     <main className="flex-1 p-6">
+                      <div className="md:hidden mb-4">
+                        <MobileSidebarTrigger />
+                      </div>
                       <AdminTips />
                     </main>
                   </div>
@@ -71,6 +77,9 @@ const App = () => (
                   <div className="flex min-h-screen">
                     <AdminSidebar />
                     <main className="flex-1 p-6">
+                      <div className="md:hidden mb-4">
+                        <MobileSidebarTrigger />
+                      </div>
                       <AdminPayments />
                     </main>
                   </div>
@@ -81,6 +90,9 @@ const App = () => (
                   <div className="flex min-h-screen">
                     <AdminSidebar />
                     <main className="flex-1 p-6">
+                      <div className="md:hidden mb-4">
+                        <MobileSidebarTrigger />
+                      </div>
                       <AdminUsers />
                     </main>
                   </div>
@@ -91,6 +103,9 @@ const App = () => (
                   <div className="flex min-h-screen">
                     <AdminSidebar />
                     <main className="flex-1 p-6">
+                      <div className="md:hidden mb-4">
+                        <MobileSidebarTrigger />
+                      </div>
                       <AdminSettings />
                     </main>
                   </div>

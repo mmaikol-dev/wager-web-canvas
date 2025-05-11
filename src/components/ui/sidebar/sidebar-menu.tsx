@@ -65,13 +65,14 @@ export const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenu
     const isCollapsed = state === "collapsed"
     
     if (asChild) {
+      const { ref: _, ...restProps } = props as any;
       return (
         <div
           data-active={isActive || active || undefined}
           className={cn(menuButtonVariants({ variant }), className)}
           data-tooltip={isCollapsed ? tooltip : undefined}
           data-tooltip-position="right"
-          {...props}
+          {...restProps}
         />
       );
     }
