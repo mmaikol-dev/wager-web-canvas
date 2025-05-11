@@ -14,6 +14,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { SidebarProvider } from "./components/ui/sidebar";
+import AdminSidebar from "./components/admin/AdminSidebar";
+import AdminOverview from "./components/admin/AdminOverview";
+import AdminTips from "./components/admin/AdminTips";
+import AdminPayments from "./components/admin/AdminPayments";
+import AdminUsers from "./components/admin/AdminUsers";
+import AdminSettings from "./components/admin/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +44,59 @@ const App = () => (
               <Route path="/jackpot" element={<Jackpot />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              
+              {/* Admin Routes */}
+              <Route path="/admin" element={
+                <SidebarProvider>
+                  <div className="flex min-h-screen">
+                    <AdminSidebar />
+                    <main className="flex-1 p-6">
+                      <AdminOverview />
+                    </main>
+                  </div>
+                </SidebarProvider>
+              } />
+              <Route path="/admin/tips" element={
+                <SidebarProvider>
+                  <div className="flex min-h-screen">
+                    <AdminSidebar />
+                    <main className="flex-1 p-6">
+                      <AdminTips />
+                    </main>
+                  </div>
+                </SidebarProvider>
+              } />
+              <Route path="/admin/payments" element={
+                <SidebarProvider>
+                  <div className="flex min-h-screen">
+                    <AdminSidebar />
+                    <main className="flex-1 p-6">
+                      <AdminPayments />
+                    </main>
+                  </div>
+                </SidebarProvider>
+              } />
+              <Route path="/admin/users" element={
+                <SidebarProvider>
+                  <div className="flex min-h-screen">
+                    <AdminSidebar />
+                    <main className="flex-1 p-6">
+                      <AdminUsers />
+                    </main>
+                  </div>
+                </SidebarProvider>
+              } />
+              <Route path="/admin/settings" element={
+                <SidebarProvider>
+                  <div className="flex min-h-screen">
+                    <AdminSidebar />
+                    <main className="flex-1 p-6">
+                      <AdminSettings />
+                    </main>
+                  </div>
+                </SidebarProvider>
+              } />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
