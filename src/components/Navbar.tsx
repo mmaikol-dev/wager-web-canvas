@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 const Navbar = () => {
   const isMobile = useIsMobile();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const isAdmin = true; // This should be determined by your authentication logic
 
   const menuItems = [
     { label: "Home", path: "/" },
@@ -46,6 +47,13 @@ const Navbar = () => {
 
           {!isMobile && (
             <div className="flex space-x-2">
+              {isAdmin && (
+                <Link to="/admin">
+                  <Button variant="outline" size="sm" className="mr-2">
+                    Admin
+                  </Button>
+                </Link>
+              )}
               <Link to="/login">
                 <Button variant="outline" size="sm">
                   Login
@@ -81,6 +89,15 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ))}
+                  {isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="text-lg px-4 py-3 text-gray-800 hover:text-betblue font-medium border-b border-gray-100"
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      Admin Dashboard
+                    </Link>
+                  )}
                   <div className="flex flex-col space-y-2 mt-4 px-4">
                     <Link
                       to="/login"
