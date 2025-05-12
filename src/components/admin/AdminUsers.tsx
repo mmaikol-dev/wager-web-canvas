@@ -74,59 +74,63 @@ const AdminUsers = () => {
         </div>
       </div>
 
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
-              <TableHead>Join Date</TableHead>
-              <TableHead>Plan</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="w-[100px]">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredUsers.length > 0 ? (
-              filteredUsers.map((user) => (
-                <TableRow key={user.id}>
-                  <TableCell className="font-medium">{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.role === "admin" ? <Badge className="bg-amber-500">Admin</Badge> : "Member"}</TableCell>
-                  <TableCell>{user.joinDate}</TableCell>
-                  <TableCell>{getPlanBadge(user.plan)}</TableCell>
-                  <TableCell>{getStatusBadge(user.status)}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <Button variant="ghost" size="icon" title="View User">
-                        <Eye className="h-4 w-4" />
-                      </Button>
-                      {user.status === "active" ? (
-                        <Button variant="ghost" size="icon" title="Suspend User">
-                          <Ban className="h-4 w-4" />
+      <div className="rounded-md border overflow-hidden">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead className="hidden md:table-cell">Email</TableHead>
+                <TableHead className="hidden sm:table-cell">Role</TableHead>
+                <TableHead className="hidden lg:table-cell">Join Date</TableHead>
+                <TableHead>Plan</TableHead>
+                <TableHead className="hidden sm:table-cell">Status</TableHead>
+                <TableHead className="w-[80px]">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredUsers.length > 0 ? (
+                filteredUsers.map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell className="font-medium">{user.name}</TableCell>
+                    <TableCell className="hidden md:table-cell">
+                      <span className="truncate max-w-[200px] block" title={user.email}>{user.email}</span>
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell">{user.role === "admin" ? <Badge className="bg-amber-500">Admin</Badge> : "Member"}</TableCell>
+                    <TableCell className="hidden lg:table-cell">{user.joinDate}</TableCell>
+                    <TableCell>{getPlanBadge(user.plan)}</TableCell>
+                    <TableCell className="hidden sm:table-cell">{getStatusBadge(user.status)}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-1">
+                        <Button variant="ghost" size="icon" title="View User" className="h-8 w-8">
+                          <Eye className="h-4 w-4" />
                         </Button>
-                      ) : (
-                        <Button variant="ghost" size="icon" title="Activate User">
-                          <Users className="h-4 w-4" />
-                        </Button>
-                      )}
-                    </div>
+                        {user.status === "active" ? (
+                          <Button variant="ghost" size="icon" title="Suspend User" className="h-8 w-8">
+                            <Ban className="h-4 w-4" />
+                          </Button>
+                        ) : (
+                          <Button variant="ghost" size="icon" title="Activate User" className="h-8 w-8">
+                            <Users className="h-4 w-4" />
+                          </Button>
+                        )}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={7} className="h-24 text-center">
+                    No users found.
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={7} className="h-24 text-center">
-                  No users found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="border rounded-md p-4">
           <div className="flex items-center gap-2">
             <div className="bg-blue-100 p-2 rounded-full">

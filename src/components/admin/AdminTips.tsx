@@ -65,48 +65,50 @@ const AdminTips = () => {
         </div>
       </div>
 
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Prediction</TableHead>
-              <TableHead>Odds</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="w-[100px]">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredTips.length > 0 ? (
-              filteredTips.map((tip) => (
-                <TableRow key={tip.id}>
-                  <TableCell className="font-medium">{tip.title}</TableCell>
-                  <TableCell>{tip.prediction}</TableCell>
-                  <TableCell>{tip.odds}</TableCell>
-                  <TableCell>{tip.date}</TableCell>
-                  <TableCell>{getStatusBadge(tip.status)}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <Button variant="ghost" size="icon" title="Edit">
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button variant="ghost" size="icon" title="Delete">
-                        <Trash className="h-4 w-4" />
-                      </Button>
-                    </div>
+      <div className="rounded-md border overflow-hidden">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[180px] min-w-[180px]">Title</TableHead>
+                <TableHead className="hidden md:table-cell">Prediction</TableHead>
+                <TableHead>Odds</TableHead>
+                <TableHead className="hidden sm:table-cell">Date</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="w-[80px]">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredTips.length > 0 ? (
+                filteredTips.map((tip) => (
+                  <TableRow key={tip.id}>
+                    <TableCell className="font-medium truncate max-w-[180px]" title={tip.title}>{tip.title}</TableCell>
+                    <TableCell className="hidden md:table-cell">{tip.prediction}</TableCell>
+                    <TableCell>{tip.odds}</TableCell>
+                    <TableCell className="hidden sm:table-cell">{tip.date}</TableCell>
+                    <TableCell>{getStatusBadge(tip.status)}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-1">
+                        <Button variant="ghost" size="icon" title="Edit" className="h-8 w-8">
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" title="Delete" className="h-8 w-8">
+                          <Trash className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={6} className="h-24 text-center">
+                    No tips found.
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={6} className="h-24 text-center">
-                  No tips found.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
       <div className="border rounded-md p-4">
@@ -128,7 +130,7 @@ const AdminTips = () => {
           </div>
           <div className="bg-muted/50 rounded-md p-4 text-center">
             <p className="text-muted-foreground text-sm">Revenue</p>
-            <p className="text-2xl font-bold mt-1">$4,582</p>
+            <p className="text-2xl font-bold mt-1">KSH 458,200</p>
           </div>
         </div>
       </div>

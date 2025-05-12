@@ -50,8 +50,8 @@ const App = () => (
                 <SidebarProvider>
                   <div className="flex min-h-screen">
                     <AdminSidebar />
-                    <main className="flex-1 p-6">
-                      <div className="md:hidden mb-4">
+                    <main className="flex-1 p-4 md:p-6 overflow-x-hidden">
+                      <div className="md:hidden mb-4 flex justify-end">
                         <MobileSidebarTrigger />
                       </div>
                       <AdminOverview />
@@ -63,8 +63,8 @@ const App = () => (
                 <SidebarProvider>
                   <div className="flex min-h-screen">
                     <AdminSidebar />
-                    <main className="flex-1 p-6">
-                      <div className="md:hidden mb-4">
+                    <main className="flex-1 p-4 md:p-6 overflow-x-hidden">
+                      <div className="md:hidden mb-4 flex justify-end">
                         <MobileSidebarTrigger />
                       </div>
                       <AdminTips />
@@ -76,8 +76,8 @@ const App = () => (
                 <SidebarProvider>
                   <div className="flex min-h-screen">
                     <AdminSidebar />
-                    <main className="flex-1 p-6">
-                      <div className="md:hidden mb-4">
+                    <main className="flex-1 p-4 md:p-6 overflow-x-hidden">
+                      <div className="md:hidden mb-4 flex justify-end">
                         <MobileSidebarTrigger />
                       </div>
                       <AdminPayments />
@@ -89,8 +89,8 @@ const App = () => (
                 <SidebarProvider>
                   <div className="flex min-h-screen">
                     <AdminSidebar />
-                    <main className="flex-1 p-6">
-                      <div className="md:hidden mb-4">
+                    <main className="flex-1 p-4 md:p-6 overflow-x-hidden">
+                      <div className="md:hidden mb-4 flex justify-end">
                         <MobileSidebarTrigger />
                       </div>
                       <AdminUsers />
@@ -102,8 +102,8 @@ const App = () => (
                 <SidebarProvider>
                   <div className="flex min-h-screen">
                     <AdminSidebar />
-                    <main className="flex-1 p-6">
-                      <div className="md:hidden mb-4">
+                    <main className="flex-1 p-4 md:p-6 overflow-x-hidden">
+                      <div className="md:hidden mb-4 flex justify-end">
                         <MobileSidebarTrigger />
                       </div>
                       <AdminSettings />
