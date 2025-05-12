@@ -57,8 +57,8 @@ const Home = () => {
         </div>
         <div className="rounded-lg overflow-hidden shadow-xl">
           <img 
-            src="/lovable-uploads/b876758e-e936-4334-b4a1-6546e0f5d090.png" 
-            alt="BetPredict Football Tips" 
+            src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
+            alt="Soccer betting analysis screen" 
             className="w-full h-auto object-cover"
           />
         </div>
