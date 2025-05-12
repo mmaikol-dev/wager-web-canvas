@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -57,8 +56,8 @@ const Home = () => {
         </div>
         <div className="rounded-lg overflow-hidden shadow-xl">
           <img 
-            src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
-            alt="Soccer betting analysis screen" 
+            src="https://images.unsplash.com/photo-1522778119026-d647f0596c20" 
+            alt="Soccer betting analysis with odds and predictions" 
             className="w-full h-auto object-cover"
           />
         </div>
