@@ -1,13 +1,12 @@
 
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff, LogIn } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,33 +14,28 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const { signIn, user } = useAuth();
-
-  // If user is already logged in, redirect to home
-  if (user) {
-    return <Navigate to="/" />;
-  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
     try {
-      const { error } = await signIn(email, password);
+      // This is a mock login for demonstration
+      // In a real application, this would connect to a backend
+      console.log("Login attempt with:", { email });
       
-      if (error) {
-        toast({
-          variant: "destructive",
-          title: "Login failed",
-          description: error.message || "Please check your credentials and try again.",
-        });
-      }
-      // Successful login is handled by the auth state change listener
-    } catch (error: any) {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Login successful!",
+        description: "Welcome back to BetPredict",
+      });
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Login failed",
-        description: error.message || "Please check your credentials and try again.",
+        description: "Please check your credentials and try again.",
       });
     } finally {
       setIsLoading(false);
@@ -108,7 +102,7 @@ const Login = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Signing in...
+                    Processing...
                   </span>
                 ) : (
                   <span className="flex items-center justify-center">

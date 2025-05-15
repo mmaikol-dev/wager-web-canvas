@@ -1,16 +1,14 @@
 
 import { Link } from "react-router-dom";
-import { LogOut, Menu, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { useState } from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { user, signOut } = useAuth();
   const isAdmin = true; // This should be determined by your authentication logic
 
   const menuItems = [
@@ -21,11 +19,6 @@ const Navbar = () => {
     { label: "VIP Plan", path: "/vip-plan" },
     { label: "Jackpot", path: "/jackpot" }
   ];
-
-  const handleSignOut = async () => {
-    await signOut();
-    setIsDrawerOpen(false);
-  };
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -54,38 +47,23 @@ const Navbar = () => {
 
           {!isMobile && (
             <div className="flex space-x-2">
-              {user ? (
-                <>
-                  {isAdmin && (
-                    <Link to="/admin">
-                      <Button variant="outline" size="sm" className="mr-2">
-                        Admin
-                      </Button>
-                    </Link>
-                  )}
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={handleSignOut}
-                    className="flex items-center"
-                  >
-                    <LogOut className="mr-2 h-4 w-4" /> Logout
+              {isAdmin && (
+                <Link to="/admin">
+                  <Button variant="outline" size="sm" className="mr-2">
+                    Admin
                   </Button>
-                </>
-              ) : (
-                <>
-                  <Link to="/login">
-                    <Button variant="outline" size="sm">
-                      Login
-                    </Button>
-                  </Link>
-                  <Link to="/register">
-                    <Button size="sm" className="bg-betblue hover:bg-betblue-light">
-                      Register
-                    </Button>
-                  </Link>
-                </>
+                </Link>
               )}
+              <Link to="/login">
+                <Button variant="outline" size="sm">
+                  Login
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button size="sm" className="bg-betblue hover:bg-betblue-light">
+                  Register
+                </Button>
+              </Link>
             </div>
           )}
           
@@ -111,7 +89,7 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ))}
-                  {user && isAdmin && (
+                  {isAdmin && (
                     <Link
                       to="/admin"
                       className="text-lg px-4 py-3 text-gray-800 hover:text-betblue font-medium border-b border-gray-100"
@@ -121,34 +99,22 @@ const Navbar = () => {
                     </Link>
                   )}
                   <div className="flex flex-col space-y-2 mt-4 px-4">
-                    {user ? (
-                      <button
-                        onClick={handleSignOut}
-                        className="flex items-center space-x-2 py-3 text-gray-800 hover:text-betblue font-medium border-b border-gray-100"
-                      >
-                        <LogOut size={20} />
-                        <span>Logout</span>
-                      </button>
-                    ) : (
-                      <>
-                        <Link
-                          to="/login"
-                          className="flex items-center space-x-2 py-3 text-gray-800 hover:text-betblue font-medium border-b border-gray-100"
-                          onClick={() => setIsDrawerOpen(false)}
-                        >
-                          <User size={20} />
-                          <span>Login</span>
-                        </Link>
-                        <Link
-                          to="/register"
-                          className="flex items-center space-x-2 py-3 text-betblue font-medium"
-                          onClick={() => setIsDrawerOpen(false)}
-                        >
-                          <User size={20} />
-                          <span>Register</span>
-                        </Link>
-                      </>
-                    )}
+                    <Link
+                      to="/login"
+                      className="flex items-center space-x-2 py-3 text-gray-800 hover:text-betblue font-medium border-b border-gray-100"
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      <User size={20} />
+                      <span>Login</span>
+                    </Link>
+                    <Link
+                      to="/register"
+                      className="flex items-center space-x-2 py-3 text-betblue font-medium"
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      <User size={20} />
+                      <span>Register</span>
+                    </Link>
                   </div>
                 </div>
               </DrawerContent>

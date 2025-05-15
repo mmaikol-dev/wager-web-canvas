@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -8,7 +8,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff, UserPlus } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -19,12 +18,6 @@ const Register = () => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const { signUp, user } = useAuth();
-
-  // If user is already logged in, redirect to home
-  if (user) {
-    return <Navigate to="/" />;
-  }
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,21 +43,22 @@ const Register = () => {
     setIsLoading(true);
     
     try {
-      const { error } = await signUp(email, password);
+      // This is a mock registration for demonstration
+      // In a real application, this would connect to a backend
+      console.log("Registration attempt with:", { email });
       
-      if (error) {
-        toast({
-          variant: "destructive",
-          title: "Registration failed",
-          description: error.message || "There was a problem creating your account.",
-        });
-      }
-      // Successful registration and login is handled by the auth state change listener
-    } catch (error: any) {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: "Registration successful!",
+        description: "Welcome to BetPredict. You can now log in.",
+      });
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Registration failed",
-        description: error.message || "There was a problem creating your account.",
+        description: "There was a problem creating your account.",
       });
     } finally {
       setIsLoading(false);
@@ -161,11 +155,11 @@ const Register = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Creating account...
+                    Processing...
                   </span>
                 ) : (
                   <span className="flex items-center justify-center">
-                    <UserPlus className="mr-2 h-4 w-4" /> Create Account
+                    <UserPlus className="mr-2 h-4 w-4" /> Register
                   </span>
                 )}
               </Button>
