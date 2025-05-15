@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff, UserPlus } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +19,12 @@ const Register = () => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { signUp, user } = useAuth();
+
+  // If user is already logged in, redirect to home
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,22 +50,25 @@ const Register = () => {
     setIsLoading(true);
     
     try {
-      // This is a mock registration for demonstration
-      // In a real application, this would connect to a backend
-      console.log("Registration attempt with:", { email });
+      const { error } = await signUp(email, password);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      toast({
-        title: "Registration successful!",
-        description: "Welcome to BetPredict. You can now log in.",
-      });
-    } catch (error) {
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Registration failed",
+          description: error.message || "There was a problem creating your account.",
+        });
+      } else {
+        toast({
+          title: "Registration successful!",
+          description: "Please check your email for verification instructions.",
+        });
+      }
+    } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Registration failed",
-        description: "There was a problem creating your account.",
+        description: error.message || "There was a problem creating your account.",
       });
     } finally {
       setIsLoading(false);
