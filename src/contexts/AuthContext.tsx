@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 
 interface AuthContextProps {
   session: Session | null;
@@ -50,6 +51,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         if (event === 'SIGNED_IN') {
           // Defer operations to prevent deadlocks
           setTimeout(() => {
+            toast({
+              title: "Signed in successfully",
+              description: "Welcome back!",
+            });
             navigate('/');
           }, 0);
         }
@@ -101,11 +106,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       // Clean up existing state
       cleanupAuthState();
       
-      // Sign up with email/password
+      // Sign up with email/password and auto-confirm
       const { error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          // Skip email confirmation by auto-confirming
+          emailRedirectTo: window.location.origin,
+          data: {
+            email_confirmed: true
+          }
+        }
       });
+      
+      if (!error) {
+        // Auto sign in after registration
+        await signIn(email, password);
+      }
       
       return { error };
     } catch (error) {
@@ -124,6 +141,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       } catch (err) {
         // Ignore errors
       }
+      
+      toast({
+        title: "Signed out successfully",
+      });
       
       // Force page reload for a clean state
       window.location.href = '/login';
